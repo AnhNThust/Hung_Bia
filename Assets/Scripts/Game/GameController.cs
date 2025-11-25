@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameData data;
-    public GameObject gameOverPanel;
+    [SerializeField]
+    private GameData _data;
+    [SerializeField]
+    private GameObject _gameOverPanel;
 
     private void Awake()
     {
-        data.ResetData();
+        // reset so diem hien tai
+        _data.ResetData();
 
-        // load high score
-        data.highScore = PlayerPrefs.GetInt(Properties.HIGH_SCORE);
+        // load so diem cao nhat trong so cac lan choi truoc do
+        _data.HighScore = PlayerPrefs.GetInt(Properties.HIGH_SCORE);
     }
 
     private void OnEnable()
@@ -25,13 +28,13 @@ public class GameController : MonoBehaviour
 
     private void GameOver()
     {
-        // Freeze Game Scene
+        // dung cac hoat dong o scene game
         Time.timeScale = 0f;
 
-        // Save Data
-        PlayerPrefs.SetInt(Properties.HIGH_SCORE, data.highScore);
+        // luu du lieu
+        PlayerPrefs.SetInt(Properties.HIGH_SCORE, _data.HighScore);
 
-        // enable game over panel
-        gameOverPanel.SetActive(true);
+        // bat game over panel len
+        _gameOverPanel.SetActive(true);
     }
 }

@@ -1,27 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Despawner : MonoBehaviour
 {
-    private int life = 3;
+    [SerializeField]
+    private GameConfig _config;
+
+    private int _catcherLife;
+
+    private void Awake()
+    {
+        _catcherLife = _config.CatcherLife;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Beer"))
         {
-            Debug.Log("Life - 1");
-            collision.gameObject.SetActive(false);
-            DescLife();
+            //Debug.Log("Life - 1");
+            // dua game object beer quay tro ve pool
+            ObjectPooler.Instance.ReturnObjectToPool(collision.gameObject);
+
+            // - 1 mang cua nguoi choi
+            LoseLife();
         }
     }
 
-    public void DescLife()
+    /// <summary>
+    /// ham giam 1 mang
+    /// </summary>
+    public void LoseLife()
     {
-        life--;
-        GameEvents.LifeChange(life);
+        //_catcherLife--;
+        GameEvents.LifeChange(--_catcherLife);
 
-        if (life <= 0)
+        if (_catcherLife <= 0)
         {
             GameEvents.PlayerDeath();
         }

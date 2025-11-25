@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d42c59561e3da34a9e0a6701530f06c, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  beerSpeed: 3
-  catcherSpeed: 3
-  catcherLife: 3
-  leftLimit: -2.1
-  rightLimit: 2.1
+  BeerSpeed: 2
+  CatcherSpeed: 3
+  CatcherLife: 3
+  SpLLimit: -2.2
+  SpRLimit: 2.2
+  CoolDown: 1
+  MovLLimit: -2.1
+  MovRLimit: 2.1

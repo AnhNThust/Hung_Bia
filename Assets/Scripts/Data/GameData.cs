@@ -3,11 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameData", menuName = "Game/Data")]
 public class GameData : ScriptableObject
 {
-    public int currentScore;
-    public int highScore;
+    public int CurrentScore;
+    public int HighScore;
 
+    // ham reset lai diem hien tai cua nguoi choi
     public void ResetData()
     {
-        currentScore = 0;
+        CurrentScore = 0;
     }
 }

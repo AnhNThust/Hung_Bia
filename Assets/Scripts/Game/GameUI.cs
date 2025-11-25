@@ -3,56 +3,49 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    public GameConfig config;
-    public GameData data;
+    // thanh phan cua giao dien gameplay
+    [SerializeField]
+    private Text _scoreText;
+    [SerializeField]
+    private Text _lifeText;
 
-    public Text scoreText;
-    public Text lifeText;
+    // thanh phan cua Game Over Panel
+    [SerializeField]
+    private Transform _gameOverPanel;
 
-    // Game Over Panel
-    public Transform gameOverPanel;
-    public Text currentScoreText;
-    public Text highScoreText;
-
-    //private int score = 0;
+    // data va config
+    [SerializeField]
+    private GameConfig _config;
+    [SerializeField]
+    private GameData _data;
 
     private void Awake()
     {
         //score = data.currentScore;
-        scoreText.text = $"Score: {data.currentScore}";
-        lifeText.text = $"Life: {config.catcherLife}";
+        _scoreText.text = $"Score: {_data.CurrentScore}";
+        _lifeText.text = $"Life: {_config.CatcherLife}";
     }
 
     private void OnEnable()
     {
         GameEvents.OnScoreChange += UpdateScore;
         GameEvents.OnLifeChange += UpdateLife;
-        //GameEvents.OnPlayerDeath += GameOver;
     }
 
     private void OnDisable()
     {
         GameEvents.OnScoreChange -= UpdateScore;
         GameEvents.OnLifeChange -= UpdateLife;
-        //GameEvents.OnPlayerDeath -= GameOver;
     }
 
     private void UpdateScore(int score)
     {
-        data.currentScore = score;
-        scoreText.text = $"Score: {data.currentScore}";
+        _data.CurrentScore = score;
+        _scoreText.text = $"Score: {_data.CurrentScore}";
     }
 
     private void UpdateLife(int life)
     {
-        lifeText.text = $"Life: {life}";
+        _lifeText.text = $"Life: {life}";
     }
-
-    //private void GameOver()
-    //{
-    //    gameOverPanel.gameObject.SetActive(true);
-    //    PlayerPrefs.SetInt(Properties.HIGH_SCORE, data.highScore);
-    //    //currentScoreText.text = $"Score: {data.currentScore}";
-    //    //highScoreText.text = $"High Score: {data.highScore}";
-    //}
 }

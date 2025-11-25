@@ -4,15 +4,17 @@ using UnityEngine.UI;
 
 public class GameOverPanel : MonoBehaviour
 {
-    public Text scoreText;
-    public Text highScoreText;
-
-    public GameData data;
+    [SerializeField]
+    private Text _currentScoreText;
+    [SerializeField]
+    private Text _highScoreText;
+    [SerializeField]
+    private GameData _data;
 
     private void OnEnable()
     {
-        scoreText.text = $"Score: {data.currentScore}";
-        highScoreText.text = $"High Score: {data.highScore}";
+        _currentScoreText.text = $"Score: {_data.CurrentScore}";
+        _highScoreText.text = $"High Score: {_data.HighScore}";
     }
 
     public void Restart()

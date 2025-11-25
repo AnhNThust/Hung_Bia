@@ -2,21 +2,19 @@ using UnityEngine;
 
 public class CatcherMovement : MonoBehaviour
 {
-    public GameConfig config;
+    [SerializeField]
+    private GameConfig _config;
 
-    private float moveDirection = 0f;
-    private float lLimit;
-    private float rLimit;
-    public float speed;
-
-    //private float leftLimit = -2.1f;
-    //private float rightLimit = 2.1f;
+    private float _moveDirection;
+    private float _lLimit;
+    private float _rLimit;
+    private float _speed;
 
     private void Awake()
     {
-        lLimit = config.leftLimit;
-        rLimit = config.rightLimit;
-        speed = config.catcherSpeed;
+        _lLimit = _config.MovLLimit;
+        _rLimit = _config.MovRLimit;
+        _speed = _config.CatcherSpeed;
     }
 
     // Update is called once per frame
@@ -24,9 +22,9 @@ public class CatcherMovement : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        pos.x += moveDirection * speed * Time.deltaTime;
+        pos.x += _moveDirection * _speed * Time.deltaTime;
 
-        pos.x = Mathf.Clamp(pos.x, lLimit, rLimit);
+        pos.x = Mathf.Clamp(pos.x, _lLimit, _rLimit);
 
         transform.position = pos;
     }
@@ -35,16 +33,16 @@ public class CatcherMovement : MonoBehaviour
     public void MoveLeft()
     {
 
-        moveDirection = -1f;
+        _moveDirection = -1f;
     }
 
     public void MoveRight()
     {
-        moveDirection = 1f;
+        _moveDirection = 1f;
     }
 
     public void StopMove()
     {
-        moveDirection = 0f;
+        _moveDirection = 0f;
     }
 }

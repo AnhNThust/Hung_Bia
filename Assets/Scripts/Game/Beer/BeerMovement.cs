@@ -1,14 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BeerMovement : MonoBehaviour
 {
-    public float speed = 5f;
+    [SerializeField]
+    private GameConfig _config;
+
+    private float _speed;
+
+    private void Awake()
+    {
+        _speed = _config.BeerSpeed;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(-1 * speed * Time.deltaTime * Vector3.up);
+        transform.Translate(-1 * _speed * Time.deltaTime * Vector3.up);
     }
 }

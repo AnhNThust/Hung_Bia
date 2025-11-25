@@ -1033,8 +1033,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 990683221}
-  - component: {fileID: 990683220}
   - component: {fileID: 990683222}
+  - component: {fileID: 990683223}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1042,21 +1042,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &990683220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990683219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1246e626b036d9c4aa6987f9abdeda75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObjects: []
-  objectToPool: {fileID: 1106218219776172472, guid: 23b44ee5a883ad74585f88bcb0298f85, type: 3}
-  amountToPool: 10
 --- !u!4 &990683221
 Transform:
   m_ObjectHideFlags: 0
@@ -1084,8 +1069,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c19c3da2bbff0409f070cc26766cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: bd743fb9fa39b244d94676f00c752a48, type: 2}
-  gameOverPanel: {fileID: 1661157518}
+  _data: {fileID: 11400000, guid: bd743fb9fa39b244d94676f00c752a48, type: 2}
+  _gameOverPanel: {fileID: 1661157518}
+--- !u!114 &990683223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990683219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69094797b8a7710449c19602e538a25a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToPool: {fileID: 1106218219776172472, guid: 23b44ee5a883ad74585f88bcb0298f85, type: 3}
+  amountToPool: 3
 --- !u!1 &1305327699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,13 +1419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a587f71c56af7e49a1ddd31ff45b8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: de54a85f19326b646a6484fb97fdb292, type: 2}
-  data: {fileID: 11400000, guid: bd743fb9fa39b244d94676f00c752a48, type: 2}
-  scoreText: {fileID: 821195846}
-  lifeText: {fileID: 989055816}
-  gameOverPanel: {fileID: 1661157519}
-  currentScoreText: {fileID: 1305327701}
-  highScoreText: {fileID: 648135849}
+  _scoreText: {fileID: 821195846}
+  _lifeText: {fileID: 989055816}
+  _gameOverPanel: {fileID: 1661157519}
+  _config: {fileID: 11400000, guid: de54a85f19326b646a6484fb97fdb292, type: 2}
+  _data: {fileID: 11400000, guid: bd743fb9fa39b244d94676f00c752a48, type: 2}
 --- !u!1 &1563032825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,7 +1487,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6509434, g: 0.16887684, b: 0.16887684, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1574,8 +1571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a93ecff06bf4f644b94039937d164ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: de54a85f19326b646a6484fb97fdb292, type: 2}
-  speed: 2
+  _config: {fileID: 11400000, guid: de54a85f19326b646a6484fb97fdb292, type: 2}
 --- !u!114 &1563032831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,7 +1584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25af89c0e5eb23845bc256e2c6722b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: bd743fb9fa39b244d94676f00c752a48, type: 2}
+  _data: {fileID: 11400000, guid: bd743fb9fa39b244d94676f00c752a48, type: 2}
 --- !u!1 &1584790221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,9 +1827,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1bc9549c76a634289851dea8c08797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1305327701}
-  highScoreText: {fileID: 648135849}
-  data: {fileID: 11400000, guid: bd743fb9fa39b244d94676f00c752a48, type: 2}
+  _currentScoreText: {fileID: 1305327701}
+  _highScoreText: {fileID: 648135849}
+  _data: {fileID: 11400000, guid: bd743fb9fa39b244d94676f00c752a48, type: 2}
 --- !u!1 &1858190604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,8 +1954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6061cb28aaa2204ab99595d66c67761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
-  beerObject: {fileID: 0}
+  _config: {fileID: 11400000, guid: de54a85f19326b646a6484fb97fdb292, type: 2}
 --- !u!1 &1916346301
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,6 +2343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46db6d6b3b4d0e6419cf637396fd60a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: de54a85f19326b646a6484fb97fdb292, type: 2}
 --- !u!61 &2032443748
 BoxCollider2D:
   m_ObjectHideFlags: 0

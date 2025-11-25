@@ -1,15 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float cooldown = COOL_DOWN;
-    public GameObject beerObject;
+    [SerializeField]
+    private GameConfig _config;
 
-    float xSpawn = 0f;
-    float ySpawn = 6f;
-    const float COOL_DOWN = 1f;
+    private float _xSpawn;
+    private float _xLeLimit;
+    private float _xRiLimit;
+    private float _coolDown;
+
+    private void Awake()
+    {
+        _xLeLimit = _config.SpLLimit;
+        _xRiLimit = _config.SpRLimit;
+        _coolDown = _config.CoolDown;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +28,12 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(COOL_DOWN);
-            xSpawn = Random.Range(-2.2f, 2.2f);
-            GameObject beer = ObjectPool.SharedInstance.GetPooledObject();
+            yield return new WaitForSeconds(_coolDown);
+            _xSpawn = Random.Range(_xLeLimit, _xRiLimit);
+            GameObject beer = ObjectPooler.Instance.GetPooledObject();
             if (beer != null)
             {
-                beer.transform.position = new Vector2(xSpawn, ySpawn);
+                beer.transform.position = new Vector2(_xSpawn, transform.position.y);
                 beer.SetActive(true);
             }
         }
